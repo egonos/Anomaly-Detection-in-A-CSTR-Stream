@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+.ruff_cache/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints
+
+# Virtualenv
+env/
+venv/
+ENV/
+.venv/
+
+# VSCode
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Docker related
+*.log
+*.pid
+*.sock
+
+# Secrets
+.env
+
+# GitHub workflows cache
+.github/workflows/*.bak
+
+# Remaining files
+requirements-dev.txt
+plugins/
+logs/
