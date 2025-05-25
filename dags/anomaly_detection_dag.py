@@ -11,7 +11,7 @@ import sys
 import os
 import joblib
 import json
-from scipy.stats import kstest
+
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 from utils import generate_abnormal_samples, generate_normal_samples
@@ -104,16 +104,14 @@ def report_summary_stats(**kwargs):
         filtered_df["temperature"].min(),
         filtered_df["temperature"].max(),
     )
-    temp_pval = kstest(filtered_df["temperature"], "norm")[1]
 
     mean_Ca0, std_Ca0 = filtered_df["Ca0"].mean(), filtered_df["Ca0"].std()
     min_Ca0, max_Ca0 = filtered_df["Ca0"].min(), filtered_df["Ca0"].max()
-    Ca0_pval = kstest(filtered_df["Ca0"], "norm")[1]
 
     min_Q, max_Q = filtered_df["Q"].min(), filtered_df["Q"].max()
     number_anomalies = len(df) - len(filtered_df)
 
-    #
+    
     hook = PostgresHook(postgres_conn_id="sensor_records")
     conn = hook.get_conn()
     cursor = conn.cursor()
@@ -126,12 +124,10 @@ def report_summary_stats(**kwargs):
             std_temperature FLOAT,
             min_temperature FLOAT,
             max_temperature FLOAT,
-            temperature_ks_pval FLOAT,
             mean_Ca0 FLOAT,
             std_Ca0 FLOAT,
             min_Ca0 FLOAT,
             max_Ca0 FLOAT,
-            Ca0_ks_pval FLOAT,
             min_Q FLOAT,
             max_Q FLOAT,
             number_anomalies INT);
@@ -142,20 +138,18 @@ def report_summary_stats(**kwargs):
         """
         INSERT INTO reactor_data
         (mean_temperature, std_temperature, min_temperature, max_temperature,
-        temperature_ks_pval, mean_Ca0, std_Ca0, min_Ca0, max_Ca0,
-        Ca0_ks_pval, min_Q, max_Q, number_anomalies)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+         mean_Ca0, std_Ca0, min_Ca0, max_Ca0,
+        min_Q, max_Q, number_anomalies)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, %s)""",
         (
             float(mean_temp),
             float(std_temp),
             float(min_temp),
             float(max_temp),
-            float(temp_pval),
             float(mean_Ca0),
             float(std_Ca0),
             float(min_Ca0),
             float(max_Ca0),
-            float(Ca0_pval),
             float(min_Q),
             float(max_Q),
             int(number_anomalies),
