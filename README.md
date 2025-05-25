@@ -16,27 +16,16 @@ Synthetic data is generated using theoretical design equations of a Continuous S
 
 $$
 \begin{align*}
-T_i &\sim \mathcal{N}(350,\,3^2) + \mathcal{N}(0,\,(\text{input\_noise\_scale} \times 350)^2) \\
-\\
-C_{A0,i} &\sim \mathcal{N}(1,\,0.02^2) + \mathcal{N}(0,\,(\text{input\_noise\_scale})^2) \\
-\\
-Q_i &\sim \mathcal{U}(1,\,1.5) + \mathcal{N}(0,\,(\text{input\_noise\_scale})^2) \\
-\\
-k_i &= A \cdot \exp\left(-\frac{E_a}{R\,T_i}\right) \\
-\\
+T_i &\sim \mathcal{N}(350,\,3^2) + \mathcal{N}(0,\,(\text{input\_noise\_scale} \cdot 350)^2) \\
+C_{A0,i} &\sim \mathcal{N}(1,\,0.02^2) + \mathcal{N}(0,\,\text{input\_noise\_scale}^2) \\
+Q_i &\sim \mathcal{U}(1,\,1.5) + \mathcal{N}(0,\,\text{input\_noise\_scale}^2) \\
+k_i &= A \cdot \exp\left(-\frac{E_a}{R T_i}\right) \\
 \tau_i &= \frac{V}{Q_i} \\
-\\
 X_{A,i} &= \frac{k_i \tau_i}{1 + k_i \tau_i} \\
-\\
 C_{A,i} &= C_{A0,i} \cdot (1 - X_{A,i}) \\
-\\
 r_{A,i} &= -k_i \cdot C_{A,i} \\
-\\
-X_{A,\text{measured},i} &= X_{A,i} + \mathcal{N}(0,\,(\text{output\_noise\_scale})^2) \\
-\\
-C_{A,\text{measured},i} &= C_{A,i} + \mathcal{N}(0,\,(\text{output\_noise\_scale})^2) \\
-\\
-r_{A,\text{measured},i} &= r_{A,i} + \mathcal{N}(0,\,(0.2 \times \text{output\_noise\_scale})^2)
+X_{A,\text{measured},i} &= X_{A,i} + \mathcal{N}(0,\,\text{output\_noise\_scale}^2) \\
+C_{A,\text{measured},i} &= C_{A,i} + \mathcal{N}(0,\,\text{output\_noise\_scale}^2)
 \end{align*}
 $$
 
