@@ -12,7 +12,7 @@ It **detects anomalies** using both an `Isolation Forest` model and a rule-based
 It **stores summary statistics** in a PostgreSQL database for later inspection and reporting.
 
 ## Dataset Generation
-Synthetic data is generated using theoretical design equations of a Continuous Stirred Tank Reactor (CSTR). To make the sensory data more realistic, Gaussian noise is added to both the input and output variables.
+Synthetic data is generated using theoretical design equations of a Continuous Stirred Tank Reactor (CSTR). To make the sensory data more realistic, Gaussian noise is added to both the input and output variables. Note that the reaction is first order.
 
 
 
@@ -30,7 +30,7 @@ $\tau_i = \frac{V}{Q_i}$
 
 $X_{A,i} = \frac{k_i \tau_i}{1 + k_i \tau_i}$
 
-$C_{A,i} = C_{A0,i} \cdot (1 - X_{A,i})$
+$C_{A,i} = C_{A0,i} \cdot (1 - X_{A,i})$ 
 
 $r_{A,i} = -k_i \cdot C_{A,i}$
 
