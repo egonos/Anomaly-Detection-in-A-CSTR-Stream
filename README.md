@@ -62,6 +62,8 @@ where $\text{input noise scale} = 0.03$ and  $\text{output noise scale} = 0.07$.
 
 ## Anomaly Detection
 
+The ideal paramater distribution:
+
 <img src="images/parameter_distribution.png" alt="Parameter Distributions" width="600">
 
 To detect anomalies, the Isolation Forest (IF) algorithm is used. Experimental results show that IF performs well in identifying anomalies in parameters having Gaussian distribution. However, its performance not as good when dealing with uniformly distributed variables, as the clusters in a uniform distribution are harder to separate.
