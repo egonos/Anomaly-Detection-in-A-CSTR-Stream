@@ -81,7 +81,7 @@ The system is configured to evaluate sensory data on an hourly basis. After anom
 To monitor the recorded data, you can use a database client such as DBeaver.
 
 1. Go to: **Database -> New Database Connection**
-2. Select PostgreSQL as the database type.
+2. Select **PostgreSQL** as the database type.
 3. On the connection setup page, provide the required credentials:
 
 <img src="images/dbeaver_connection.png" alt="PostgreSQL Table Example" width="600">
