@@ -89,7 +89,7 @@ Clone the repo by writing the code below to your terminal:
 
 ```bash
 git clone https://github.com/egonos/Anomaly-Detection-in-a-CSTR-Stream.git
-cd https://github.com/egonos/Anomaly-Detection-in-a-CSTR-Stream.git
+cd Anomaly-Detection-in-a-CSTR-Stream
 ```
 ### 2. Start Docker Services
 
