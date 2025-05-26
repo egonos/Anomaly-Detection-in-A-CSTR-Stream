@@ -109,11 +109,11 @@ Login credentials:
 
 ### 4. Connect Airflow to the Postgres Container
 
-This step is only necessary for the first time use
+**Note:** This step is only necessary for the first time use.
 
-1. Go to the **Admin** tab → Connections.
+1. Go to the **Admin** tab → **Connections**.
 2. Click '+'
-3. Fill accordingly:
+3. Fill the lines accordingly:
 
 * **Connection ID:** sensor_recors
 * **Conncection Type:** postgres
@@ -122,7 +122,8 @@ This step is only necessary for the first time use
 * **Login:** airflow
 * **Port:** 5432 (since we connect from outside of the container)
 
-Then you can trigger the `anomaly_detection_dag` manually
+After that, the installation finishes. You can use or edit the pipeline based on your needs.
+
 ## Additional Notes
 
 To monitor the recorded data, you can use a database client such as DBeaver.
