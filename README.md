@@ -60,6 +60,9 @@ $Q_{\text{high},i}: \quad Q_i \sim \mathcal{U}(2,2.5) + \mathcal{N}(0,\text{inpu
 
 where $\text{input noise scale} = 0.03$ and  $\text{output noise scale} = 0.07$.
 
+Follow the steps below to run the project locally using Docker and access the Airflow UI.
+
+
 ## Anomaly Detection
 
 The ideal paramater distribution:
@@ -76,6 +79,50 @@ The system is configured to evaluate sensory data on an hourly basis. After anom
 
 <img src="images/postgres_table.png" alt="PostgreSQL Table Example" width="800">
 
+## Setup
+
+Follow the steps below to run the project locally.
+
+### 1. Clone the Repository
+
+Clone the repo by writing the code below to your terminal:
+
+```bash
+git clone https://github.com/egonos/Anomaly-Detection-in-a-CSTR-Stream.git
+cd https://github.com/egonos/Anomaly-Detection-in-a-CSTR-Stream.git
+```
+### 2. Start Docker Services
+
+After initializing Docker Desktop, write the following code to your terminal. This will install and initialize the service.
+
+```bash
+docker compose up --build
+```
+
+### 3. Access Airflow UI
+
+Once the containers are up, open your browser and go to: http://localhost:8080
+
+Login credentials:
+* **Username:** egemen
+* **Password:** egemen
+
+### 4. Connect Airflow to the Postgres Container
+
+This step is only necessary for the first time use
+
+1. Go to the **Admin** tab → Connections.
+2. Click '+'
+3. Fill accordingly:
+
+* **Connection ID:** sensor_recors
+* **Conncection Type:** postgres
+* **Host:** postgres
+* **Database:** airflow
+* **Login:** airflow
+* **Port:** 5432 (since we connect from outside of the container)
+
+Then you can trigger the `anomaly_detection_dag` manually
 ## Additional Notes
 
 To monitor the recorded data, you can use a database client such as DBeaver.
