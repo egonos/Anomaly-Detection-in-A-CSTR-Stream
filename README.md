@@ -65,7 +65,7 @@ Follow the steps below to run the project locally using Docker and access the Ai
 
 ## Anomaly Detection
 
-The ideal paramater distribution:
+The ideal parameter distribution:
 
 <img src="images/parameter_distribution.png" alt="Parameter Distributions" width="600">
 
@@ -115,8 +115,8 @@ Login credentials:
 2. Click '+'
 3. Fill the lines accordingly:
 
-* **Connection ID:** sensor_recors
-* **Conncection Type:** postgres
+* **Connection ID:** sensor_records
+* **Connection Type:** postgres
 * **Host:** postgres
 * **Database:** airflow
 * **Login:** airflow
@@ -139,7 +139,7 @@ To monitor the recorded data, you can use a database client such as DBeaver.
 
 Once the connection is established, you can use SQL queries within DBeaver to explore and analyze the stored data.
 
-Also to anayze the details of the anomaly detection model, please go to `notebooks` folder.
+Also to analyze the details of the anomaly detection model, please go to `notebooks` folder.
 
 ## Further Improvements
 
